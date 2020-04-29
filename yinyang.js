@@ -1,17 +1,14 @@
 
 
-
-
-
 function yinYang(canvasID,whiteColor = '#FFF', blackColor = '#000'){
     let width = 200;
     let height = 200;
 
 
-    const domCanvas = document.getElementById(canvasID);
+    // const domCanvas = document.getElementById(canvasID);
+    // const domContext = domCanvas.getContext('2d');
+    const domContext = document.getElementById(canvasID).getContext('2d');
     // domCanvas.style.backgroundColor = whiteColor;
-    domCanvas.style.backgroundColor = '#999';
-    const domContext = domCanvas.getContext('2d');
 
     domContext.clearRect(0,0,width,height);
 
@@ -54,18 +51,7 @@ function yinYang(canvasID,whiteColor = '#FFF', blackColor = '#000'){
         domContext.stroke();
 
 }
-yinYang('circleCanvas');
-
-
-
-
-
-
-
-
-
-
-
+yinYang('yinyangCanvas');
 
 
 
