@@ -1,43 +1,42 @@
 
 
 
-function makeCircles(canvasID){
-let canvasContext = document.getElementById(canvasID).getContext('2d');
+function makeCircles(canvasID, numberOfCircles) {
+    let canvasContext = document.getElementById(canvasID).getContext('2d');
 
     let width = 400;
     let height = 400;
     let cx = width / 2;
     let cy = height / 2;
-    let rad = width * 0.45;
+    let radius = width * 0.45;
 
     // canvasContext.beginPath();
     canvasContext.fillStyle = '#000';
-    drawCircle(canvasContext, cx, cy, rad, false);
+    // drawCircle(canvasContext, cx, cy, radius, false);
+    // drawCircle(canvasContext, cx, cy, radius);
 
-    canvasContext.beginPath();
-    canvasContext.arc(cx, cy, rad/2, 0, 1.57);
-    canvasContext.fill();
 
-    canvasContext.beginPath();
-    canvasContext.arc(cx, cy, rad/2, 1.57, 3.14);
-    canvasContext.fill();
+    let smallRadius = ((radius * 2 * Math.PI) / numberOfCircles) / 2;
+    for(let i = 1; i <= numberOfCircles; i++){
+        let angle = i * 2 * Math.PI / numberOfCircles;
+        let x = cx + Math.cos(angle) * radius;
+        let y = cx + Math.sin(angle) * radius;
+        // canvasContext.beginPath();
+        // canvasContext.arc(x, y, smallRadius, 0, 360, false);
+        // canvasContext.fill();
+        drawCircle(canvasContext, x, y, smallRadius, true);
+    }
+    
 
-    canvasContext.beginPath();
-    canvasContext.arc(cx, cy, rad/2, 3.14, 4.71);
-    canvasContext.fill();
-
-    canvasContext.beginPath();
-    canvasContext.arc(cx, cy, rad/2, 4.71, Math.PI * 2);
-    canvasContext.fill();
   
 }
 
-makeCircles('circlesCanvas');
+makeCircles('circlesCanvas', 40);
 
 
-function drawCircle(context, cx, cy, rad, fill = true) {
+function drawCircle(context, cx, cy, radius, fill = true) {
     context.beginPath();
-    context.arc(cx, cy, rad, 0, 2 * Math.PI, false);
+    context.arc(cx, cy, radius, 0, 2 * Math.PI, false);
     if(fill === true){
         context.fill();
     }else{
