@@ -16,22 +16,35 @@ function makeCircles(canvasID, numberOfCircles) {
     // drawCircle(canvasContext, cx, cy, radius);
 
 
-    let smallRadius = ((radius * 2 * Math.PI) / numberOfCircles) / 2;
+    // Spiral
+    let smallRadius = 4;
     for(let i = 1; i <= numberOfCircles; i++){
+        let ratio = i / numberOfCircles;
+        let spiralRadiusCenter = i * ratio;
         let angle = i * 2 * Math.PI / numberOfCircles;
-        let x = cx + Math.cos(angle) * radius;
-        let y = cx + Math.sin(angle) * radius;
-        // canvasContext.beginPath();
-        // canvasContext.arc(x, y, smallRadius, 0, 360, false);
-        // canvasContext.fill();
+        let x = cx + Math.cos(angle) * spiralRadiusCenter;
+        let y = cx + Math.sin(angle) * spiralRadiusCenter;
+
         drawCircle(canvasContext, x, y, smallRadius, true);
     }
+
+    
+    // let smallRadius = ((radius * 2 * Math.PI) / numberOfCircles) / 2;
+    // for(let i = 1; i <= numberOfCircles; i++){
+    //     let angle = i * 2 * Math.PI / numberOfCircles;
+    //     let x = cx + Math.cos(angle) * radius;
+    //     let y = cx + Math.sin(angle) * radius;
+    //     // canvasContext.beginPath();
+    //     // canvasContext.arc(x, y, smallRadius, 0, 360, false);
+    //     // canvasContext.fill();
+    //     drawCircle(canvasContext, x, y, smallRadius, true);
+    // }
     
 
   
 }
 
-makeCircles('circlesCanvas', 40);
+makeCircles('circlesCanvas', 400);
 
 
 function drawCircle(context, cx, cy, radius, fill = true) {
