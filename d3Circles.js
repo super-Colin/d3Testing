@@ -17,7 +17,7 @@ function makeCircles(canvasID, numberOfCircles) {
 
 
     // Spiral
-    let smallRadius = 4;
+    let smallRadius = 2;
     for(let i = 1; i <= numberOfCircles; i++){
         let ratio = i / numberOfCircles;
         let spiralRadiusCenter = i * ratio;
@@ -44,7 +44,7 @@ function makeCircles(canvasID, numberOfCircles) {
   
 }
 
-makeCircles('circlesCanvas', 400);
+makeCircles('circlesCanvas', 100);
 
 
 function drawCircle(context, cx, cy, radius, fill = true) {
